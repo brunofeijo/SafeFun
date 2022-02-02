@@ -1,9 +1,47 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>config</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="login"></ion-back-button>
+      <b>Conecte seu dispositivo!</b>
+    </ion-buttons>
+    <ion-title slot="end"><ion-icon color="primary" name="bluetooth"></ion-icon></ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <div>
+  
+    <ion-item *ngIf="deviceConnected===true">
+      <ion-label style="text-align: center;">Dispositivo conectado!</ion-label>
+      <ion-icon color="success" size="large" name="checkmark-circle"></ion-icon>
+    </ion-item>
+  
+</div>
+
+<div>
+  <ion-button expand="full" style="text-transform: none;" fill="solid" color="secondary" (click)="checkBluetothIsEnabled()">Procurar dispositivos</ion-button>
+    
+  <ion-card *ngFor="let device of devicesPaired">
+    <ion-card-content>
+    <h1>Dispositivo: {{device.name}}</h1> MAC: {{device.address}}
+    <ion-button expand="full" style="text-transform: none;" fill="solid" color="secondary" (click)="connectDevice(device.address)">conectar</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngFor="let device of devicesPaired">
+    <ion-card-content>
+    <h1>Dispositivo: {{device.name}}</h1> MAC: {{device.address}}
+    <ion-button expand="full" style="text-transform: none;" fill="solid" color="secondary" (click)="connectDevice(device.address)">conectar</ion-button>
+    </ion-card-content>
+  </ion-card>
+</div>  
+
+  <div>
+  <ion-footer style="bottom: 50px; height: 50px; position: fixed; text-align: center; padding-top: 5px;">
+    <ion-button *ngIf="devicesPaired!=0 || devicesUnpaired!=0" expand="full" style="text-transform: none;" fill="solid" color="secondary" (click)=" clearDevicesData()">Limpar dispositivos</ion-button>
+    <ion-button *ngIf="deviceConnected===true" expand="full" style="text-transform: none;" fill="solid" color="secondary" (click)=" disconnectDevice()">Desconectar Dispositivo</ion-button>
+  </ion-footer>
+</div>
 
 </ion-content>

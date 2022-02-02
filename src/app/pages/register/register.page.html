@@ -1,9 +1,43 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>register</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="login"></ion-back-button>
+      <b>Registre-se!</b>
+    </ion-buttons>
+    <ion-title slot="end"><ion-icon color="primary" name="mail"></ion-icon></ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <form action="action_page.php">
+  <div class="container">
+    <hr>
+    
+    <ion-item>
+      <ion-label position="floating" for="email">Usuário</ion-label>
+      <ion-input clear-input type="text" name="email" id="email" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label positioin="floating" for="psw">Senha</ion-label>
+      <ion-input clear-input type="password" name="psw" id="psw" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label positioin="floating" for="psw">Repita sua Senha</ion-label>
+      <ion-input type="password" name="psw-repeat" id="psw-repeat" required></ion-input>
+    </ion-item>
+
+    <hr>
+
+    <ion-button style="text-transform: none;" color="secondary" expand="full" type="submit" class="registerbtn">Registrar</ion-button>
+  </div>
+
+  <div style="text-align: center;" class="container signin">
+    <p>Já possui seu acesso? <a href="#">Clique aqui para entrar!</a>.</p>
+  </div>
+</form>
+
 
 </ion-content>
