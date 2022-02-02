@@ -1,0 +1,7 @@
+{
+  "name": "SafeFun",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
