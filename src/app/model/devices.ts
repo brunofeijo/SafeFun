@@ -1,6 +1,6 @@
-export class Devices {
+export interface Devices {
     name: string;
     address: string;
     id: string;
-    class: number;
+    class: string;
 }

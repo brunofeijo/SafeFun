@@ -32,7 +32,7 @@
 
   <div>
   <ion-footer style="bottom: 50px; height: 50px; position: fixed; text-align: center; padding-top: 5px;">
-    <ion-button *ngIf="devices!=0 || devices!=0" expand="full" style="text-transform: none;" fill="solid" color="secondary" (click)=" clearDevices()">Limpar dispositivos</ion-button>
+    <ion-button *ngIf="devices" expand="full" style="text-transform: none;" fill="solid" color="secondary" (click)=" clearDevices()">Limpar dispositivos</ion-button>
     <ion-button *ngIf="deviceIsConnected===true" expand="full" style="text-transform: none;" fill="solid" color="secondary" (click)=" disconnectDevice()">Desconectar Dispositivo</ion-button>
   </ion-footer>
 </div>

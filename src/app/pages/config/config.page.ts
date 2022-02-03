@@ -9,22 +9,21 @@ import { ToastBoxService } from 'src/app/util/toast-box.service';
   selector: 'app-config',
   templateUrl: './config.page.html',
   styleUrls: ['./config.page.scss'],
-  providers: [BluetoothSerial, Devices]
+  providers: [BluetoothSerial]
 })
 export class ConfigPage implements OnInit {
 
     public deviceIsConnected: boolean = false;
-    public devices: Array<any> = [];
+    public devices: Devices;
+    
 
   constructor(
-
+    
     public bluetooth: BluetoothSerial,
     public msgBox: MessageBoxService,
     public loadingBox: LoaderBoxService,
     public toastBox: ToastBoxService,
     
-
-
   ) { }
 
   ngOnInit() {
@@ -52,7 +51,7 @@ export class ConfigPage implements OnInit {
   }
 
   public clearDevices(){
-    this.devices = [];
+    
   }
 
   public searchDevices(){
@@ -73,6 +72,7 @@ export class ConfigPage implements OnInit {
   }
 
   public connectDevice(device){
+    console.log(device);
     this.loadingBox.presentLoading('Conectando dispositivo...');
     this.bluetooth.connect(device).subscribe(
       data => {

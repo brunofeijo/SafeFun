@@ -11,7 +11,7 @@ export class LoaderBoxService {
     const loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
       message: msg,
-      duration: 15000
+      duration: 150000
     });
     await loading.present();
     const { role, data } = await loading.onDidDismiss();
