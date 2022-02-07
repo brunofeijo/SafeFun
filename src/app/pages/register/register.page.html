@@ -16,28 +16,27 @@
     
     <ion-item>
       <ion-label position="floating" for="email">Usuário</ion-label>
-      <ion-input clear-input type="text" name="email" id="email" required></ion-input>
+      <ion-input clear-input type="text" name="username" id="username" [(ngModel)]="username" required></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label positioin="floating" for="psw">Senha</ion-label>
-      <ion-input clear-input type="password" name="psw" id="psw" required></ion-input>
+      <ion-input clear-input type="password" name="password" id="password" [(ngModel)]="password" required></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label positioin="floating" for="psw">Repita sua Senha</ion-label>
-      <ion-input type="password" name="psw-repeat" id="psw-repeat" required></ion-input>
+      <ion-input type="password" name="password-repeat" id="passsword-repeat" required></ion-input>
     </ion-item>
 
     <hr>
 
-    <ion-button style="text-transform: none;" color="secondary" expand="full" type="submit" class="registerbtn">Registrar</ion-button>
+    <ion-button (click)="registerNewUser()" style="text-transform: none;" color="secondary" expand="full" type="submit" class="registerbtn">Registrar</ion-button>
   </div>
 
   <div style="text-align: center;" class="container signin">
     <p>Já possui seu acesso? <a href="#">Clique aqui para entrar!</a>.</p>
   </div>
 </form>
-
 
 </ion-content>

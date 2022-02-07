@@ -57,7 +57,7 @@ export class AuthService {
       return of(null);
     }
  
-    return this.http.get('http://localhost:3000').pipe(
+    return this.http.get('http://localhost:3001').pipe(
       take(1),
       map(res => {
         // Extract the JWT, here we just fake it
@@ -74,6 +74,7 @@ export class AuthService {
   }
  
   getUser() {
+    console.log("aqui")
     return this.userData.getValue();
   }
  

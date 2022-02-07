@@ -6,12 +6,11 @@
         <ng-template>
           <ion-content>
             <ion-list>
-              <ion-item>
-                
-                <ion-label style="font-size: small;">Configurações:</ion-label>
-              
+              <ion-label style="font-size: small;">&nbsp; Configurações:</ion-label>
+              <ion-item>              
                 <ion-label position="floating">IP do servidor</ion-label>
-                <ion-input type="url"></ion-input>
+                <ion-input clear-input type="text" submit [(ngModel)]="serverIP"></ion-input>
+                <ion-button fill="clear" slot="end" (click)="setData(storedIP)"><ion-icon name="save-outline"></ion-icon></ion-button>
               </ion-item>
               <ion-item color="secondary" style="text-align: center;" [button]="true" href="config">
                 <ion-label>Conectar Leitor</ion-label>
@@ -30,12 +29,12 @@
       <ion-item color="light">
         <ion-icon name="person" slot="start"></ion-icon>
         <ion-label position="floating">Usuário</ion-label>
-        <ion-input clear-input type="text" name="email" [(ngModel)]="credentials.email"></ion-input>
+        <ion-input clear-input type="text" name="email" [(ngModel)]="loginUserName"></ion-input>
       </ion-item>
       <ion-item color="light">
         <ion-icon name="key" slot="start"></ion-icon>
         <ion-label position="floating">Senha</ion-label>
-        <ion-input clear-input type="text" name="email" [(ngModel)]="credentials.password"></ion-input>
+        <ion-input clear-input type="text" name="email" [(ngModel)]="loginPassword"></ion-input>
       </ion-item>      
       <ion-button (click)="login()" style="text-transform: none;" type="submit" expand="block" color="secondary">Entrar</ion-button>
       <ion-card-content>
@@ -49,7 +48,4 @@
     </ion-card>
   </div>
 
-  <ion-footer style="bottom: 50px; height: 50px; position: fixed; text-align: center; padding-top: 15px;">
-    Bruno Feijó
-  </ion-footer>
 </ion-content>
