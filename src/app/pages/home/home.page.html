@@ -10,6 +10,12 @@
  
 <ion-content>
   
-  
+  <div>
+    <ion-card-header *ngIf="tags">Tags encontradas:</ion-card-header>
+      <ion-card *ngFor="let tag of tags">
+        <ion-label>EPC:</ion-label>
+        <ion-card-content>{{tag}}</ion-card-content>
+      </ion-card>
+  </div>
  
 </ion-content>
