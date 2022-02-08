@@ -105,24 +105,4 @@ export class ConfigPage implements OnInit {
     );
   }
 
-  // public startInvetorying(){
-  //   this.subscription1$ = this.bluetooth.subscribe('.iv').subscribe(
-  //     data => {
-  //      this.tags = data;
-  //      console.log(data);
-  //      if(this.tags.includes('OK')){
-  //       console.log('Teste'); 
-  //       this.subscription1$.unsubscribe();
-  //      }
-  //     }
-  //   );
-  //   console.log();
-  // } 
-  
-
-
-
-
-
-
 }

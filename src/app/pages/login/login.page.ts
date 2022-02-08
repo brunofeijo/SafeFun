@@ -17,7 +17,7 @@ export class LoginPage implements OnInit {
   public loginPassword: string;
   public dataAPI: number;
   public errAPI: number;
-  public serverIP: any;
+  public serverIP: string = '';
   public storedIP: any;
 
  
@@ -27,17 +27,11 @@ export class LoginPage implements OnInit {
     public route: Router,
     public storage: Storage,
 
-  ) {}
- 
-  ngOnInit() {}
-
-  public setData(value: any){
+  ) { 
     this.storage.create();
-    console.log();
-    this.storage.set(this.serverIP, value);
-    this.storedIP = this.storage.get(this.serverIP);
-    console.log(typeof(this.storedIP));
   }
+ 
+  ngOnInit() {}  
 
   public login() { 
     let postData =  {
@@ -45,10 +39,12 @@ export class LoginPage implements OnInit {
       password: this.loginPassword,
       extra: "teste"
   }   
-     this.http.post(this.storedIP, postData,{observe: 'response'}).subscribe(
+     this.http.post(this.serverIP, postData,{observe: 'response'}).subscribe(
        data => {
          this.dataAPI = data.status;
          if(this.dataAPI === 201){
+           this.loginUserName = '';
+           this.loginPassword = '';
           this.route.navigate(['/home'])
           alert("Seja bem vindo!")
          }        
