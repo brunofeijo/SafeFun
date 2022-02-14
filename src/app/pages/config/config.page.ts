@@ -14,7 +14,7 @@ import { ToastBoxService } from 'src/app/util/toast-box.service';
 export class ConfigPage implements OnInit {
 
     public deviceIsConnected: boolean = false;
-    public devices: Devices;
+    public devices: Array<any> = [];
     
 
   constructor(
@@ -51,7 +51,7 @@ export class ConfigPage implements OnInit {
   }
 
   public clearDevices(){
-    
+    this.devices = [];
   }
 
   public searchDevices(){

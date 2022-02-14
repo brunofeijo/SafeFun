@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <div style="text-align: center;"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Inventário</b></div>
+    <ion-button slot="end" fill="clear" (click)="logout()"><ion-icon name="log-out-outline"></ion-icon></ion-button>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content>
+  
+  <div>
+    <ion-card-header *ngIf="tags.length">Tags encontradas:</ion-card-header>
+      <ion-card *ngFor="let tag of tags">
+        <ion-label><br>&nbsp;&nbsp;&nbsp;EPC:</ion-label>
+        <ion-card-content>{{tag}}</ion-card-content>
+      </ion-card>
+  </div>
+ 
+</ion-content>

@@ -5,12 +5,12 @@ import { Router } from '@angular/router';
 import { BluetoothSerial } from '@awesome-cordova-plugins/bluetooth-serial/ngx';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
-  providers: [BluetoothSerial]
+  selector: 'app-inventory',
+  templateUrl: './inventory.page.html',
+  styleUrls: ['./inventory.page.scss'],
+  providers: [BluetoothSerial],
 })
-export class HomePage {
+export class inventoryPage {
     public tags: Array<any> = []
  
   constructor(

@@ -1,4 +1,4 @@
-import { Platform } from '@ionic/angular';
+import { ToastBoxService } from './../util/toast-box.service';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { BehaviorSubject, Observable, from, of } from 'rxjs';
@@ -6,83 +6,63 @@ import { take, map, switchMap } from 'rxjs/operators';
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
- 
-const helper = new JwtHelperService();
-const TOKEN_KEY = 'jwt-token';
- 
+  
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 
 export class AuthService {
 
-  public user: Observable<any>;
-  private userData = new BehaviorSubject(null);
- 
+  private loginUserName: string;
+  private loginPassword: string;
+  private serverIP: string;
+  private dataAPI: any;
+  private errAPI: any;
+
   constructor(
-
-    private storage: Storage, 
-    private http: HttpClient, 
-    private plt: Platform, 
-    private router: Router
-
-    ) { 
-
-    this.loadStoredToken();  
-
-  }
- 
-  loadStoredToken() {
-    let platformObs = from(this.plt.ready());
- 
-    this.user = platformObs.pipe(
-      switchMap(() => {
-        return from(this.storage.get(TOKEN_KEY));
-      }),
-      map(token => {
-        if (token) {
-          let decoded = helper.decodeToken(token); 
-          this.userData.next(decoded);
-          return true;
-        } else {
-          return null;
-        }
-      })
-    );
-  }
- 
-  login(credentials: {email: string, pw: string }) {
-    // Normally make a POST request to your APi with your login credentials
-    if (credentials.email != 'brunolenio@gmail.com' || credentials.pw != '1234') {
-      return of(null);
+  private http: HttpClient,
+  private route: Router,
+  private Toast: ToastBoxService,
+  
+  ) {}
+  
+  public login(loginUserName: string, loginPassword: string, serverIP: string) {  
+    let postData = {
+      "id": 0,
+      "idToken": "",
+      "login": loginUserName,
+      "nome": "",
+      "perfil": "",
+      "senha": loginPassword,
+    };console.log(serverIP);
+      this.http.post(serverIP, postData,{observe: 'response'}).subscribe(
+        data => {
+          if(data.status === 200){
+            this.Toast.presentToast('Seja bem vindo ' + loginUserName);
+            loginUserName = loginUserName;
+            loginPassword = loginPassword;
+            this.route.navigate(['/home']);
+          }        
+        },error => {
+            this.errAPI = error.status
+            switch(this.errAPI){
+              case 400:
+                alert("Usuário e senha obrigatórios");
+                break;
+              case 401:
+                alert("Usuário ou senha inválido")
+                break;
+              case 404:
+                alert("Servidor não encontrado")
+                break;
+              default:
+            }
+            console.log(error);
+         });
     }
- 
-    return this.http.get('http://localhost:3001').pipe(
-      take(1),
-      map(res => {
-        // Extract the JWT, here we just fake it
-        return `eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE1Njc2NjU3MDYsImV4cCI6MTU5OTIwMTcwNiwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoiMTIzNDUiLCJmaXJzdF9uYW1lIjoiU2ltb24iLCJsYXN0X25hbWUiOiJHcmltbSIsImVtYWlsIjoic2FpbW9uQGRldmRhY3RpYy5jb20ifQ.4LZTaUxsX2oXpWN6nrSScFXeBNZVEyuPxcOkbbDVZ5U`;
-      }),
-      switchMap(token => {
-        let decoded = helper.decodeToken(token);
-        this.userData.next(decoded);
- 
-        let storageObs = from(this.storage.set(TOKEN_KEY, token));
-        return storageObs;
-      })
-    );
-  }
- 
-  getUser() {
-    console.log("aqui")
-    return this.userData.getValue();
-  }
- 
-  logout() {
-    this.storage.remove(TOKEN_KEY).then(() => {
-      this.router.navigateByUrl('/');
-      this.userData.next(null);
-    });
-  }
- 
+  
+
+
+
+
 }
