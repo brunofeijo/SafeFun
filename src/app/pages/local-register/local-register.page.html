@@ -24,32 +24,18 @@
     <ion-button (click)="login()" style="text-transform: none;" type="submit" expand="full" color="secondary">Registrar</ion-button>
   </ion-card>
   
+  <ion-card>
   <ion-button (click)="getLocation()" style="text-transform: none;" id="trigger-button" color="secondary" expand="full">Localizações cadastradas</ion-button>
   <ion-popover trigger="trigger-button">
     <ng-template>
       <ion-content>
         <ion-list>
-          <ion-label *ngFor="let location of locations">
-            {{location.nome}}<br>
-          </ion-label>
+          <ion-item *ngFor="let location of locations">
+            &nbsp;<b>{{location.nome}}</b><br>
+          </ion-item>
         </ion-list>
       </ion-content>
     </ng-template>
   </ion-popover>
-  
-  
-
-
-
-  <!-- <ion-button (click)="getLocation()" id="trigger-button" style="text-transform: none;" expand="full" color="secondary">Localizações Registradadas</ion-button>
-  <ion-modal trigger="trigger-button">
-    <ng-template>
-      <ion-content>
-        <ion-list *ngFor="let locations of location" style="text-align: center;">
-          {{locations.nome}}
-        </ion-list>
-      </ion-content>
-    </ng-template>
-  </ion-modal> -->
-
+</ion-card>
 </ion-content>

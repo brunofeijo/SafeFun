@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-local-register',
@@ -9,9 +10,23 @@ import { Component, OnInit } from '@angular/core';
 export class LocalRegisterPage implements OnInit {
 
   public locations: any;
+  public postData = {
+    "id": 0,
+    "localizacaoPaiId": 0,
+    "nivelLocalizacaoId": 0,
+    "nome": "string",
+    "rfid": "string",
+    "sigla": "string",
+    "usuarios": [
+      {
+        "tipo": "LOTADO",
+        "usuarioId": 0
+      }
+    ]
+  } 
 
   constructor(
-
+    public auth: AuthService,
     public http: HttpClient,
 
   ) { }
@@ -20,21 +35,8 @@ export class LocalRegisterPage implements OnInit {
   }
 
   public getLocation(){
-    let postData = {
-      "id": 0,
-      "localizacaoPaiId": 0,
-      "nivelLocalizacaoId": 0,
-      "nome": "string",
-      "rfid": "string",
-      "sigla": "string",
-      "usuarios": [
-        {
-          "tipo": "LOTADO",
-          "usuarioId": 0
-        }
-      ]
-    } 
-    this.http.post("http://192.168.200.245/cld-core/ativos-mobile/localizacao", postData, {}).subscribe(
+
+    this.http.post("http://192.168.200.245/cld-core/ativos-mobile/localizacao", this.postData).subscribe(
       data => {
         this.locations = data;
         console.log(data);
@@ -44,4 +46,11 @@ export class LocalRegisterPage implements OnInit {
       });
   
   }
+
+  public logout() {
+    this.auth.logout();
+  }
+
+
+
 }

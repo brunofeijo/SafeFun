@@ -2,6 +2,7 @@ import { ToastBoxService } from './../../util/toast-box.service';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -18,8 +19,11 @@ export class RegisterPage implements OnInit {
   public registerPasswordConfirmation: string;
 
   constructor(
+
+    public auth: AuthService,
     public http: HttpClient,
     public toast: ToastBoxService,
+    
   ) { }
 
   ngOnInit() {
@@ -47,6 +51,8 @@ export class RegisterPage implements OnInit {
        });
   }
 
-  
+  public logout() {
+    this.auth.logout();
+  }
 
 }

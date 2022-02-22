@@ -10,9 +10,6 @@ import { LoginPage } from '../pages/login/login.page';
 
 export class AuthService {
 
-  private loginUserName: string;
-  private loginPassword: string;
-  private serverIP: string;
   private dataAPI: any;
   private errAPI: any;
   public userConnected: boolean = false;
@@ -29,14 +26,15 @@ export class AuthService {
       "id": 0,
       "idToken": "",
       "login": loginUserName,
-      "nome": "",
+      "nome": '',
       "perfil": "",
       "senha": loginPassword,
     };
       this.http.post(serverIP, postData,{observe: 'response'}).subscribe(
         data => {
-          if(data.status === 200){
-            this.Toast.presentToast('Seja bem vindo ' + loginUserName);
+            if(data.status === 200){
+            this.Toast.presentToast('Seja bem vindo ' + postData.nome);
+            console.log(postData.senha)
             this.userConnected = true;
             this.route.navigate(['/home']);
           }        
@@ -44,13 +42,13 @@ export class AuthService {
             this.errAPI = error.status
             switch(this.errAPI){
               case 400:
-                alert("Usuário e senha obrigatórios");
+                this.Toast.presentToast("Usuário e senha obrigatórios");
                 break;
               case 401:
-                alert("Usuário ou senha inválido")
+                this.Toast.presentToast("Usuário ou senha inválido")
                 break;
               case 404:
-                alert("Servidor não encontrado")
+                this.Toast.presentToast("Servidor não encontrado")
                 break;
               default:
             }

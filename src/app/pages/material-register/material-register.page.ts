@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-material-register',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MaterialRegisterPage implements OnInit {
 
-  constructor() { }
+  constructor(
+
+    public auth: AuthService
+    
+  ) { }
 
   ngOnInit() {
+  }
+
+  public logout() {
+    this.auth.logout();
   }
 
 }
