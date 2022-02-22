@@ -32,6 +32,14 @@ const routes: Routes = [
     path: 'material-register',
     loadChildren: () => import('./pages/material-register/material-register.module').then( m => m.MaterialRegisterPageModule)
   },
+  {
+    path: 'password-recovery',
+    loadChildren: () => import('./pages/password-recovery/password-recovery.module').then( m => m.PasswordRecoveryPageModule)
+  },
+  {
+    path: 'local-register',
+    loadChildren: () => import('./pages/local-register/local-register.module').then( m => m.LocalRegisterPageModule)
+  },
 ];
 
 @NgModule({

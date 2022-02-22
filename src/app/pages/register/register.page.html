@@ -1,42 +1,37 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="login"></ion-back-button>
-      <b>Registre-se!</b>
-    </ion-buttons>
-    <ion-title slot="end"><ion-icon color="primary" name="mail"></ion-icon></ion-title>
+    <ion-item lines="none"><ion-label style="text-align: center;"><b>Registro de usuários</b></ion-label></ion-item>
+    <ion-back-button slot="start" [routerLink]="['/home']"></ion-back-button>
+    <ion-button slot="end" fill="clear" (click)="logout()"><ion-icon name="log-out-outline"></ion-icon></ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
-  <form action="action_page.php">
-  <div class="container">
-    <hr>
-    
+  <ion-card>
     <ion-item>
-      <ion-label position="floating" for="email">Usuário</ion-label>
-      <ion-input clear-input type="text" name="username" id="username" [(ngModel)]="username" required></ion-input>
+      <ion-label position="floating">Login</ion-label>
+      <ion-input clear-input type="text" name="registerUserName" [(ngModel)]="registerUserName"></ion-input>
     </ion-item>
-
     <ion-item>
-      <ion-label positioin="floating" for="psw">Senha</ion-label>
-      <ion-input clear-input type="password" name="password" id="password" [(ngModel)]="password" required></ion-input>
+      <ion-label position="floating">Nome completo</ion-label>
+      <ion-input clear-input type="text" name="registerFullName" [(ngModel)]="registerFullName"></ion-input>
     </ion-item>
-
     <ion-item>
-      <ion-label positioin="floating" for="psw">Repita sua Senha</ion-label>
-      <ion-input type="password" name="password-repeat" id="passsword-repeat" required></ion-input>
+      <ion-label position="floating">Matrícula</ion-label>
+      <ion-input clear-input type="text" name="registerRegistration" [(ngModel)]="registerRegistration"></ion-input>
     </ion-item>
-
-    <hr>
-
-    <ion-button (click)="registerNewUser()" style="text-transform: none;" color="secondary" expand="full" type="submit" class="registerbtn">Registrar</ion-button>
-  </div>
-
-  <div style="text-align: center;" class="container signin">
-    <p>Já possui seu acesso? <a href="#">Clique aqui para entrar!</a>.</p>
-  </div>
-</form>
-
+    <ion-item>
+      <ion-label position="floating">Cargo</ion-label>
+      <ion-input clear-input type="text" name="registerRole" [(ngModel)]="registerRole"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Senha</ion-label>
+      <ion-input clear-input type="password" name="password" [(ngModel)]="registerPassword"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Confirmação da senha</ion-label>
+      <ion-input clear-input type="password" name="registerPasswordConfirmation" [(ngModel)]="registerPasswordConfirmation"></ion-input>
+    </ion-item>
+    <ion-button (click)="login()" style="text-transform: none;" type="submit" expand="full" color="secondary">Registrar</ion-button>
+  </ion-card>
 </ion-content>

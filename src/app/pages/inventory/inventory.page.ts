@@ -11,17 +11,19 @@ import { BluetoothSerial } from '@awesome-cordova-plugins/bluetooth-serial/ngx';
   providers: [BluetoothSerial],
 })
 export class inventoryPage {
-    public tags: Array<any> = []
+    public tags: Array<any> = [1,2,3,4,5]
+    public userConnected: boolean = false;
  
   constructor(
 
     public route: Router,
-    public bluetooth: BluetoothSerial
+    public bluetooth: BluetoothSerial,
+    public auth: AuthService,
 
     ) { }
 
     public logout() {
-      this.route.navigate(['/login'])
+      this.auth.logout();
     }
 
     public startInvetorying(){

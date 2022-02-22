@@ -1,11 +1,8 @@
 import { ToastBoxService } from './../util/toast-box.service';
-import { Injectable } from '@angular/core';
-import { Storage } from '@ionic/storage';
-import { BehaviorSubject, Observable, from, of } from 'rxjs';
-import { take, map, switchMap } from 'rxjs/operators';
-import { JwtHelperService } from "@auth0/angular-jwt";
+import { Component, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { LoginPage } from '../pages/login/login.page';
   
 @Injectable({
   providedIn: 'root',
@@ -18,6 +15,7 @@ export class AuthService {
   private serverIP: string;
   private dataAPI: any;
   private errAPI: any;
+  public userConnected: boolean = false;
 
   constructor(
   private http: HttpClient,
@@ -34,13 +32,12 @@ export class AuthService {
       "nome": "",
       "perfil": "",
       "senha": loginPassword,
-    };console.log(serverIP);
+    };
       this.http.post(serverIP, postData,{observe: 'response'}).subscribe(
         data => {
           if(data.status === 200){
             this.Toast.presentToast('Seja bem vindo ' + loginUserName);
-            loginUserName = loginUserName;
-            loginPassword = loginPassword;
+            this.userConnected = true;
             this.route.navigate(['/home']);
           }        
         },error => {
@@ -57,11 +54,13 @@ export class AuthService {
                 break;
               default:
             }
-            console.log(error);
          });
     }
   
-
+  public logout() {
+    this.userConnected = false;
+    this.route.navigate(['/login']);
+  }
 
 
 

@@ -1,20 +1,27 @@
-<ion-content style="align-content: center;">
+<ion-content>
   <ion-toolbar>
     <ion-buttons slot="end">
-      <ion-button id="settings-button"><ion-icon name="settings-outline"></ion-icon></ion-button>
-      <ion-popover trigger="settings-button" [dismissOnSelect]="false">
+      <ion-button fill="clear" id="nested-button"><ion-icon name="settings-outline"></ion-icon></ion-button>
+      <ion-popover trigger="nested-button" [dismissOnSelect]="true">
         <ng-template>
           <ion-content>
             <ion-list>
-              <ion-label style="font-size: small;">&nbsp; Configurações:</ion-label>
-              <ion-item>              
-                <ion-label position="floating">IP do servidor</ion-label>
-                <ion-input clear-input type="text" submit [(ngModel)]="serverIP"></ion-input>
-                <!-- <ion-button fill="clear" slot="end"><ion-icon name="save-outline"></ion-icon></ion-button> -->
-              </ion-item>
-              <ion-item color="secondary" style="text-align: center;" [button]="true" href="config">
+              <ion-item lines="none" color="secondary" [button]="true" [detail]="false" [routerLink]="['/config']">
                 <ion-label>Conectar Leitor</ion-label>
               </ion-item>
+              <ion-item lines="none" [button]="true" [detail]="true" id="nested-trigger">
+                <ion-label>IP do servidor</ion-label>
+              </ion-item>
+              <ion-popover trigger="nested-trigger" [keyboardClose]="false" [dismissOnSelect]="false" side="start">
+                <ng-template>
+                  <ion-content>
+                    <ion-item>
+                      <ion-button color="secondary" size="small" slot="end" fill="clear" (click)="storeIP()"><ion-icon name="save" slot="start"></ion-icon></ion-button>
+                      <ion-input clear-input placeholder="Digite seu IP" submit [(ngModel)]="serverIP" type="url"></ion-input>
+                    </ion-item>
+                  </ion-content>
+                </ng-template>
+              </ion-popover>
             </ion-list>
           </ion-content>
         </ng-template>
@@ -25,8 +32,8 @@
 <ion-img style="height: 150px; margin: auto; display: block;" src="assets/logobox.png"></ion-img>
 
   <div>
-    <ion-card color="light">
-      <ion-item color="light">
+    <ion-card>
+      <ion-item>
         <ion-icon name="person" slot="start"></ion-icon>
         <ion-label position="floating">Usuário</ion-label>
         <ion-input clear-input type="text" name="user" [(ngModel)]="loginUserName"></ion-input>
@@ -34,15 +41,12 @@
       <ion-item color="light">
         <ion-icon name="key" slot="start"></ion-icon>
         <ion-label position="floating">Senha</ion-label>
-        <ion-input clear-input type="text" name="password" [(ngModel)]="loginPassword"></ion-input>
+        <ion-input clear-input type="password" name="password" [(ngModel)]="loginPassword"></ion-input>
       </ion-item>      
       <ion-button (click)="login()" style="text-transform: none;" type="submit" expand="block" color="secondary">Entrar</ion-button>
       <ion-card-content>
-        <ion-item color="light" style="text-align: center;" href="#" class="ion-activated">
+        <ion-item color="light" style="text-align: center;" [routerLink]="['/password-recovery']" class="ion-activated">
           <ion-label>Esqueceu sua senha?</ion-label>
-        </ion-item>
-        <ion-item color="light" style="text-align: center;" href="register" class="ion-activated">
-          <ion-label>Registre-se</ion-label>
         </ion-item>
       </ion-card-content>
     </ion-card>

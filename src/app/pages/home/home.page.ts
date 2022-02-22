@@ -16,12 +16,13 @@ export class HomePage {
   constructor(
 
     public route: Router,
-    public bluetooth: BluetoothSerial
+    public bluetooth: BluetoothSerial,
+    public auth: AuthService,
 
     ) { }
 
     public logout() {
-      this.route.navigate(['/login'])
+      this.auth.logout();
     }
 
     public startInvetorying(){

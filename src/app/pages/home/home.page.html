@@ -1,27 +1,54 @@
 <ion-header>
   <ion-toolbar>
-    <div style="text-align: center;"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Teletronic Inventory</b></div>
+    <ion-item lines="none"><ion-label style="text-align: center;"><b>Teletronic Sistema de Inventário</b></ion-label></ion-item>
     <ion-button slot="end" fill="clear" (click)="logout()"><ion-icon name="log-out-outline"></ion-icon></ion-button>
-    <ion-buttons slot="start">
-      <!-- <ion-back-button defaultHref="login"></ion-back-button> -->
-    </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
  
 <ion-content>
-  <div>
-    <ion-card button="true" style="text-align: center;">
-      <ion-item style="text-align: center;" href="inventory" class="ion-activated">
-        <ion-label>Inventário</ion-label>
-      </ion-item>
-    </ion-card>
-  </div>
-  <div>
-    <ion-card button="true" style="text-align: center;">
-        <ion-item style="text-align: center;" href="" class="ion-activated">
-          <ion-label>Registro de materiais</ion-label>
-        </ion-item>
-      </ion-card>
-  </div>
-  
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div>
+          <ion-card class="squaredCard" button="true" [routerLink]="['/local-register']">
+            <ion-item lines="none" class="squaredCardItem">
+              <ion-label><b>Registro de locais</b></ion-label>
+            </ion-item>
+          </ion-card>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          <ion-card class="squaredCard" button="true" [routerLink]="['/material-register']">
+            <ion-item lines="none" class="squaredCardItem">
+              <ion-label><b>Registro de material</b></ion-label>
+            </ion-item>
+          </ion-card>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div>
+          <ion-card class="squaredCard" button="true" [routerLink]="['/inventory']">
+              <ion-item lines="none" class="squaredCardItem">
+                <ion-label><b>Inventário</b></ion-label>
+              </ion-item>
+            </ion-card>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          <ion-card class="squaredCard" button="true" [routerLink]="['/register']">
+              <ion-item lines="none" class="squaredCardItem">
+                <ion-label><b>Registro de Usuários</b></ion-label>
+              </ion-item>
+            </ion-card>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
 </ion-content>

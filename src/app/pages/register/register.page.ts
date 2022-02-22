@@ -10,8 +10,12 @@ import { FormsModule } from '@angular/forms';
 })
 export class RegisterPage implements OnInit {
 
-  public username: string; 
-  public password: string;
+  public registerUserName: string; 
+  public registerFullName: string;
+  public registerPassword: string;
+  public registerRole: string;
+  public registerRegistration: string;
+  public registerPasswordConfirmation: string;
 
   constructor(
     public http: HttpClient,
@@ -26,10 +30,10 @@ export class RegisterPage implements OnInit {
     let postData =  {
       "id": 0,
       "idToken": "",
-      "login": this.username,
+      "login": this.registerUserName,
       "nome": "",
       "perfil": "",
-      "senha": this.password
+      "senha": this.registerPassword
   }
    
      this.http.post("http://192.168.200.245/cld-core/ativos-mobile/usuario", postData,{observe: 'response'})

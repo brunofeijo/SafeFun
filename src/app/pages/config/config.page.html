@@ -1,12 +1,10 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="login"></ion-back-button>
-      <b>Conecte seu dispositivo!</b>
-    </ion-buttons>
-    <ion-title slot="end"><ion-icon color="primary" name="bluetooth"></ion-icon></ion-title>
+    <ion-item lines="none"><ion-label style="text-align: center;"><b>Configurações&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></ion-label></ion-item>
+    <ion-back-button slot="start" [routerLink]="['/login']"></ion-back-button>
   </ion-toolbar>
 </ion-header>
+
 
 <ion-content>
 
