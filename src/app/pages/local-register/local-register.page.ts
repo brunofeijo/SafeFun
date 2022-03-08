@@ -9,37 +9,24 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LocalRegisterPage implements OnInit {
 
-  public locations: any;
-  public postData = {
-    "id": 0,
-    "localizacaoPaiId": 0,
-    "nivelLocalizacaoId": 0,
-    "nome": "string",
-    "rfid": "string",
-    "sigla": "string",
-    "usuarios": [
-      {
-        "tipo": "LOTADO",
-        "usuarioId": 0
-      }
-    ]
-  } 
+  public locations: any = [];
 
   constructor(
     public auth: AuthService,
     public http: HttpClient,
 
-  ) { }
+  ) { this.getLocation(); }
 
   ngOnInit() {
   }
 
   public getLocation(){
 
-    this.http.post("http://192.168.200.245/cld-core/ativos-mobile/localizacao", this.postData).subscribe(
+    this.http.post("http://192.168.200.245/cld-core/ativos-mobile/localizacao", this.locations).subscribe(
       data => {
+        console.log(this.locations);
         this.locations = data;
-        console.log(data);
+       
        
       }, error => {
         console.log(error);

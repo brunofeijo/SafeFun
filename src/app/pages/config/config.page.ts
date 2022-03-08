@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { BluetoothSerial } from '@awesome-cordova-plugins/bluetooth-serial/ngx';
-import { Devices } from 'src/app/model/devices';
 import { LoaderBoxService } from 'src/app/util/loader-box.service';
 import { MessageBoxService } from 'src/app/util/message-box.service';
 import { ToastBoxService } from 'src/app/util/toast-box.service';
@@ -82,7 +81,6 @@ export class ConfigPage implements OnInit {
           this.clearDevices();
         }
         this.toastBox.presentToast('Dispositivo conectado!');
-        // this.startInvetorying();
       },
     error => {
       this.loadingBox.loadingController.dismiss('Conectando dispositivo...');

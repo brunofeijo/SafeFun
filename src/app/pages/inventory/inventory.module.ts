@@ -1,11 +1,9 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
 
 import { InventoryPageRoutingModule } from './inventory-routing.module';
-
 import { inventoryPage } from './inventory.page';
 
 @NgModule({

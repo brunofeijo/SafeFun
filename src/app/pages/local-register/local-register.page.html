@@ -11,17 +11,17 @@
   <ion-card>
     <ion-item>
       <ion-label position="floating">Localidade</ion-label>
-      <ion-input clear-input type="text" name="registerMaterialName" [(ngModel)]="registerMaterialName"></ion-input>
+      <ion-input clear-input="true" type="text" [(ngModel)]="locations.nome"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Descrição da localidade</ion-label>
-      <ion-input clear-input type="text" name="registerMaterialType" [(ngModel)]="registerMaterialType"></ion-input>
+      <ion-input clear-input="true" type="text" [(ngModel)]="locations.descriptions"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Nivel da localidade</ion-label>
-      <ion-input clear-input type="text" name="registerMaterialTag" [(ngModel)]="registerMaterialTag"></ion-input>
+      <ion-input clear-input="true" type="text" [(ngModel)]="locations.level"></ion-input>
     </ion-item>
-    <ion-button (click)="login()" style="text-transform: none;" type="submit" expand="full" color="secondary">Registrar</ion-button>
+    <ion-button (click)="logout()" style="text-transform: none;" type="submit" expand="full" color="secondary">Registrar</ion-button>
   </ion-card>
   
   <ion-card>

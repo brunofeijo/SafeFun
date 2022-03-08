@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-item lines="none"><ion-label style="text-align: center;"><b>Inventário</b></ion-label></ion-item>
+    <ion-item lines="none"><ion-label style="text-align: center;"><b>Movimentação</b></ion-label></ion-item>
     <ion-back-button slot="start" [routerLink]="['/home']"></ion-back-button>
     <ion-button slot="end" fill="clear" (click)="logout()"><ion-icon name="log-out-outline"></ion-icon></ion-button>
   </ion-toolbar>
@@ -15,5 +15,46 @@
         <ion-card-content>{{tag}}</ion-card-content>
       </ion-card>
   </div>
- 
+
+  <div>
+    <ion-list>
+      <ion-list-header>
+        <ion-label>
+          Local de origem:
+        </ion-label>
+      </ion-list-header>
+      <ion-item>
+        <ion-label>Selecione o local</ion-label>
+        <ion-select ok-texte="Ok" cancel-text="Cancelar" placeholder="Local">
+          <ion-list *ngFor=" let location of locations">
+            <ion-select-option>
+              {{location.nome}}
+            </ion-select-option>
+          </ion-list>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div>
+    <ion-list>
+      <ion-list-header>
+        <ion-label>
+          Local de destino:
+        </ion-label>
+      </ion-list-header>
+      <ion-item>
+        <ion-label>Selecione o local</ion-label>
+        <ion-select ok-texte="Ok" cancel-text="Cancelar" placeholder="Local">
+          <ion-list *ngFor=" let location of locations">
+            <ion-select-option>
+              {{location.nome}}
+            </ion-select-option>
+          </ion-list>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  </div>
+  <ion-button style="text-transform: none;" id="trigger-button" color="secondary" expand="full">Movimentar</ion-button>
+  
 </ion-content>

@@ -7,31 +7,33 @@
 </ion-header>
 
 <ion-content>
-  <ion-card>
+ <ion-list>
     <ion-item>
       <ion-label position="floating">Login</ion-label>
-      <ion-input clear-input type="text" name="registerUserName" [(ngModel)]="registerUserName"></ion-input>
+      <ion-input clear-input="true" placeholder="Digite seu login" type="text" [(ngModel)]="user.login"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="floating">Nome completo</ion-label>
-      <ion-input clear-input type="text" name="registerFullName" [(ngModel)]="registerFullName"></ion-input>
+      <ion-label position="floating">Nome</ion-label>
+      <ion-input clear-input="true" placeholder="Digite seu nome completo" type="text" [(ngModel)]="user.fullName"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Matrícula</ion-label>
-      <ion-input clear-input type="text" name="registerRegistration" [(ngModel)]="registerRegistration"></ion-input>
+      <ion-input clear-input="true" placeholder="Digite sua matrícula" type="text" [(ngModel)]="user.registration"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Cargo</ion-label>
-      <ion-input clear-input type="text" name="registerRole" [(ngModel)]="registerRole"></ion-input>
+      <ion-input clear-input="true" placeholder="Digite seu cargo" type="text" [(ngModel)]="user.role"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Senha</ion-label>
-      <ion-input clear-input type="password" name="password" [(ngModel)]="registerPassword"></ion-input>
+      <ion-input clear-input="true" placeholder="Digite sua senha" [type]="password_type" [(ngModel)]="user.senha"></ion-input>
+      <ion-button fill="clear" slot="end" (click)="exibirOcultar()"><ion-icon name="eye-off-outline"></ion-icon></ion-button>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Confirmação da senha</ion-label>
-      <ion-input clear-input type="password" name="registerPasswordConfirmation" [(ngModel)]="registerPasswordConfirmation"></ion-input>
+      <ion-input clear-input="true" placeholder="Repita sua senha" [type]="password_type" [(ngModel)]="user.passwordConfirmation"></ion-input>
+      
     </ion-item>
-    <ion-button (click)="login()" style="text-transform: none;" type="submit" expand="full" color="secondary">Registrar</ion-button>
-  </ion-card>
+    <ion-button (click)="registerNewUser()" style="text-transform: none;" type="submit" expand="full" color="secondary">Registrar</ion-button>
+  </ion-list>
 </ion-content>

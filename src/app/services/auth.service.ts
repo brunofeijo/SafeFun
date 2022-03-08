@@ -33,8 +33,7 @@ export class AuthService {
       this.http.post(serverIP, postData,{observe: 'response'}).subscribe(
         data => {
             if(data.status === 200){
-            this.Toast.presentToast('Seja bem vindo ' + postData.nome);
-            console.log(postData.senha)
+            this.Toast.presentToast('Seja bem vindo');
             this.userConnected = true;
             this.route.navigate(['/home']);
           }        

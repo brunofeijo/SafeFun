@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Storage } from '@ionic/storage';
 import { PopoverController } from '@ionic/angular';
 import { ToastBoxService } from 'src/app/util/toast-box.service';
+import { FingerprintAIO, FingerprintOptions } from '@ionic-native/fingerprint-aio/ngx/index';
  
 @Component({
   selector: 'app-login',
@@ -12,11 +13,14 @@ import { ToastBoxService } from 'src/app/util/toast-box.service';
 })
 export class LoginPage {
 
+  public fingerprintOptions: FingerprintOptions;
+  public fingerAuth: FingerprintAIO;
   public loginUserName: string;
   public loginPassword: string;
   public serverIP: string ='http://192.168.200.245/cld-core/ativos-mobile/login';
   
   constructor(
+    
     private Toast: ToastBoxService,
     private auth: AuthService,
     private storage: Storage,
@@ -26,12 +30,14 @@ export class LoginPage {
   ngOnInit() {} 
   
   public storeIP(){
+    
     this.storage.create();
     this.storage.set('1', this.serverIP);
     this.Toast.presentToast('IP salvo com sucesso!');
     this.popover.dismiss();
     
   }
+  
 
   public login() {
     if(this.loginUserName==''||this.loginPassword==''){

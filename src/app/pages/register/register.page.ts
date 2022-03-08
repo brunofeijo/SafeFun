@@ -11,12 +11,8 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class RegisterPage implements OnInit {
 
-  public registerUserName: string; 
-  public registerFullName: string;
-  public registerPassword: string;
-  public registerRole: string;
-  public registerRegistration: string;
-  public registerPasswordConfirmation: string;
+  public user: any = {};
+  public password_type: string = 'password';
 
   constructor(
 
@@ -28,19 +24,13 @@ export class RegisterPage implements OnInit {
 
   ngOnInit() {
   }
+  
+  public exibirOcultar() {   
+    this.password_type = this.password_type === 'text' ? 'password' : 'text';
+ }
 
   public registerNewUser(){
-
-    let postData =  {
-      "id": 0,
-      "idToken": "",
-      "login": this.registerUserName,
-      "nome": "",
-      "perfil": "",
-      "senha": this.registerPassword
-  }
-   
-     this.http.post("http://192.168.200.245/cld-core/ativos-mobile/usuario", postData,{observe: 'response'})
+     this.http.post("http://192.168.200.245/cld-core/ativos-mobile/usuario", this.user,{observe: 'response'})
        .subscribe(data => {
          if(data.status===200){
            this.toast.presentToast("Usuário criado com sucesso!");
