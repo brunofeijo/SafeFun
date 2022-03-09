@@ -1,9 +1,8 @@
-import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service'; 
 import { BluetoothSerial } from '@awesome-cordova-plugins/bluetooth-serial/ngx';
-import { ValueAccessor } from '@ionic/angular/directives/control-value-accessors/value-accessor';
-import { __values } from 'tslib';
+
 
 @Component({
   selector: 'app-inventory',

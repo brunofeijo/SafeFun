@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthorizeGuard } from './guards/auth.guard';
 
 const routes: Routes = [
 
@@ -10,6 +11,7 @@ const routes: Routes = [
   },
   {
     path: 'home',
+    canActivate: [AuthorizeGuard],
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
   {
@@ -22,14 +24,17 @@ const routes: Routes = [
   },
   {
     path: 'register',
+    canActivate: [AuthorizeGuard],
     loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
   },
   {
     path: 'inventory',
+    canActivate: [AuthorizeGuard],
     loadChildren: () => import('./pages/inventory/inventory.module').then( m => m.InventoryPageModule)
   },
   {
     path: 'material-register',
+    canActivate: [AuthorizeGuard],
     loadChildren: () => import('./pages/material-register/material-register.module').then( m => m.MaterialRegisterPageModule)
   },
   {
@@ -38,6 +43,7 @@ const routes: Routes = [
   },
   {
     path: 'local-register',
+    canActivate: [AuthorizeGuard],
     loadChildren: () => import('./pages/local-register/local-register.module').then( m => m.LocalRegisterPageModule)
   },
 ];
