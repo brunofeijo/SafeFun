@@ -83,9 +83,9 @@ export class ConfigPage implements OnInit {
         this.toastBox.presentToast('Dispositivo conectado!');
       },
     error => {
-      this.loadingBox.loadingController.dismiss('Conectando dispositivo...');
       console.log(error);
       this.toastBox.presentToast('Erro ao conectar dispositivo');
+      this.loadingBox.loadingController.dismiss('Conectando dispositivo...');
       }
     );
   }

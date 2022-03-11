@@ -5,17 +5,20 @@
     <ion-button slot="end" fill="clear" (click)="logout()"><ion-icon name="log-out-outline"></ion-icon></ion-button>
   </ion-toolbar>
 </ion-header>
- 
-<ion-content>
-  
-  <div>
-    <ion-card-header *ngIf="tags.length">Tags encontradas:</ion-card-header>
-      <ion-card *ngFor="let tag of tags">
-        <ion-label><br>&nbsp;&nbsp;&nbsp;<b>Material</b></ion-label>
-        <ion-card-content>EPC:&nbsp;{{tag}}</ion-card-content>
-      </ion-card>
-  </div>
+<ion-card>
+<ion-toolbar>
+  <ion-card-header *ngIf="tags">Tags encontradas:&nbsp; Em construção </ion-card-header>
+</ion-toolbar>
+</ion-card> 
 
+<ion-content>
+    <ion-card *ngFor="let tag of tags">
+      <ion-label><br>&nbsp;&nbsp;&nbsp;<b>Material</b></ion-label>
+        <ion-card-content>EPC:&nbsp;{{tag}}</ion-card-content>
+    </ion-card>
+</ion-content>
+
+  <ion-card>
   <div>
     <ion-list>
       <ion-list-header>
@@ -24,37 +27,30 @@
         </ion-label>
       </ion-list-header>
       <ion-item>
-        <ion-label>Selecione o local</ion-label>
-        <ion-select ok-texte="Ok" cancel-text="Cancelar" placeholder="Local">
-          <ion-list *ngFor=" let location of locations">
-            <ion-select-option>
+        <ion-label>Selecione a origem</ion-label>
+        <ion-select interface="popover">
+            <ion-select-option *ngFor=" let location of locations">
               {{location.nome}}
             </ion-select-option>
-          </ion-list>
         </ion-select>
       </ion-item>
     </ion-list>
   </div>
 
-  <div>
-    <ion-list>
-      <ion-list-header>
-        <ion-label>
-          Local de destino:
-        </ion-label>
-      </ion-list-header>
       <ion-item>
-        <ion-label>Selecione o local</ion-label>
-        <ion-select ok-texte="Ok" cancel-text="Cancelar" placeholder="Local">
-          <ion-list *ngFor=" let location of locations">
-            <ion-select-option>
-              {{location.nome}}
-            </ion-select-option>
-          </ion-list>
+        <ion-label>Selecione o destino</ion-label>
+        <ion-select interface="popover">
+          <ion-select-option *ngFor=" let location of locations">
+            {{location.nome}}
+          </ion-select-option>
         </ion-select>
       </ion-item>
-    </ion-list>
-  </div>
-  <ion-button style="text-transform: none;" id="trigger-button" color="secondary" expand="full">Movimentar</ion-button>
+
+</ion-card>
+
+  <ion-footer>
+    <ion-toolbar>
+      <ion-button (click)="moveMaterial()" size="large" style="text-transform: none;" id="trigger-button" color="secondary" expand="full">Movimentar</ion-button>
+    </ion-toolbar>
+  </ion-footer>
   
-</ion-content>
