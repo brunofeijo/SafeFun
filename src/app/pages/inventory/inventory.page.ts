@@ -14,8 +14,8 @@ export class inventoryPage {
     public rawTags: any;
     public userConnected: boolean = false;
     public locations: any;
-    public originLocal: string = "Origem";
-    public destinationLocal: string = "Destino";
+    public originPlace: string = "Origem";
+    public destinationPlace: string = "Destino";
  
   constructor(
     public http: HttpClient,
@@ -61,8 +61,8 @@ export class inventoryPage {
 
     public moveMaterial() {
       console.log("to aqui")
-      console.log(this.originLocal, this.destinationLocal)
-      if(this.originLocal == this.destinationLocal){
+      console.log(this.originPlace, this.destinationPlace)
+      if(this.originPlace == this.destinationPlace){
         alert("A origem e o destino do ativo não podem ser a mesma!")
       }else{
         alert("deu certo!")

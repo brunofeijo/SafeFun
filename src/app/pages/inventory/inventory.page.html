@@ -28,7 +28,7 @@
       </ion-list-header>
       <ion-item>
         <ion-label>Selecione a origem</ion-label>
-        <ion-select interface="popover">
+        <ion-select interface="popover" [(ngModel)]="originPlace">
             <ion-select-option *ngFor=" let location of locations">
               {{location.nome}}
             </ion-select-option>
@@ -39,8 +39,8 @@
 
       <ion-item>
         <ion-label>Selecione o destino</ion-label>
-        <ion-select interface="popover">
-          <ion-select-option *ngFor=" let location of locations">
+        <ion-select interface="popover" [(ngModel)]="destinationPlace">
+          <ion-select-option *ngFor=" let location of locations" >
             {{location.nome}}
           </ion-select-option>
         </ion-select>
