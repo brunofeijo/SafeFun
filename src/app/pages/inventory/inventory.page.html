@@ -5,9 +5,10 @@
     <ion-button slot="end" fill="clear" (click)="logout()"><ion-icon name="log-out-outline"></ion-icon></ion-button>
   </ion-toolbar>
 </ion-header>
-<ion-card>
+
+<ion-card *ngIf="tags">
 <ion-toolbar>
-  <ion-card-header *ngIf="tags">Tags encontradas:&nbsp; Em construção </ion-card-header>
+  <ion-card-header>Tags encontradas:&nbsp; Em construção </ion-card-header>
 </ion-toolbar>
 </ion-card> 
 
@@ -19,27 +20,21 @@
 </ion-content>
 
   <ion-card>
-  <div>
     <ion-list>
-      <ion-list-header>
-        <ion-label>
-          Local de origem:
-        </ion-label>
-      </ion-list-header>
+
       <ion-item>
         <ion-label>Selecione a origem</ion-label>
-        <ion-select interface="popover" [(ngModel)]="originPlace">
+        <ion-select interface="popover" placeholder="local" [(ngModel)]="originPlace">
             <ion-select-option *ngFor=" let location of locations">
               {{location.nome}}
             </ion-select-option>
         </ion-select>
       </ion-item>
     </ion-list>
-  </div>
 
       <ion-item>
         <ion-label>Selecione o destino</ion-label>
-        <ion-select interface="popover" [(ngModel)]="destinationPlace">
+        <ion-select interface="popover" placeholder="local" [(ngModel)]="destinationPlace">
           <ion-select-option *ngFor=" let location of locations" >
             {{location.nome}}
           </ion-select-option>

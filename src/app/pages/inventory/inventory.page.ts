@@ -60,8 +60,6 @@ export class inventoryPage {
   }
 
     public moveMaterial() {
-      console.log("to aqui")
-      console.log(this.originPlace, this.destinationPlace)
       if(this.originPlace == this.destinationPlace){
         alert("A origem e o destino do ativo não podem ser a mesma!")
       }else{
