@@ -55,9 +55,6 @@ export class inventoryPage {
         });    
     }
 
-    public locationChange($event) {
-      console.log($event.target.value) ;
-  }
 
     public moveMaterial() {
       if(this.originPlace == this.destinationPlace){
