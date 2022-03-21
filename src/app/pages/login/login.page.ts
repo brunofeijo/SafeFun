@@ -23,9 +23,15 @@ export class LoginPage {
     private auth: AuthService,
     private storage: Storage,
     private popover: PopoverController,
-  ) {}
+  ) {this.test();}
  
   ngOnInit() {} 
+
+  test(){
+alert("Um retorno de carro está\rbem no meio desta linha!");
+alert("\"Isto não saiu como deveria!\" disse ela");
+alert("Esta linha tem uma tabulação\taqui.");
+  }
   
   public storeIP(){
     

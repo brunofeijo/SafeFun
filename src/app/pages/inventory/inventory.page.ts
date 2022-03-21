@@ -36,9 +36,11 @@ export class inventoryPage {
     public startInvetorying(){
       this.bluetooth.subscribe('.iv').subscribe(
         data => {
+          console.log(data);
           this.rawTags = data;
           console.log(this.rawTags);
           this.tags = this.rawTags.split(" ");
+          console.log(this.rawTags);
           this.zone.run(()=>{
             this.tags;
           })
