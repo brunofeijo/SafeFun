@@ -5,26 +5,30 @@
   </ion-toolbar>
 </ion-header>
 
- 
-<ion-content>
+
+<ion-content color="medium dark">
 
   <ion-grid>
     <ion-row>
       <ion-col>
         <div>
           <ion-card class="squaredCard" button="true" [routerLink]="['/local-register']">
+            <ion-card-content>
             <ion-item lines="none" class="squaredCardItem">
-              <ion-label><b>Registro<br>de<br>locais</b></ion-label>
+              <ion-label><b>Localizações</b></ion-label>
             </ion-item>
+          </ion-card-content>
           </ion-card>
         </div>
       </ion-col>
       <ion-col>
         <div>
           <ion-card class="squaredCard" button="true" [routerLink]="['/material-register']">
+            <ion-card-content>
             <ion-item lines="none" class="squaredCardItem">
-              <ion-label><b>Registro<br>de<br>material</b></ion-label>
+              <ion-label expand="block"><b>Ativos</b></ion-label>
             </ion-item>
+          </ion-card-content>
           </ion-card>
         </div>
       </ion-col>
@@ -33,21 +37,15 @@
       <ion-col>
         <div>
           <ion-card class="squaredCard" button="true" [routerLink]="['/inventory']">
+            <ion-card-content>
               <ion-item lines="none" class="squaredCardItem">
                 <ion-label><b>Movimentação</b></ion-label>
               </ion-item>
+            </ion-card-content>
             </ion-card>
         </div>
       </ion-col>
-      <ion-col>
-        <div>
-          <ion-card class="squaredCard" button="true" [routerLink]="['/register']">
-              <ion-item lines="none" class="squaredCardItem">
-                <ion-label><b>Registro<br>de<br>Usuários</b></ion-label>
-              </ion-item>
-            </ion-card>
-        </div>
-      </ion-col>
+
     </ion-row>
   </ion-grid>
 

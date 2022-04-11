@@ -10,8 +10,11 @@ export class ToastBoxService {
   async presentToast(msg: any, msg2?: any) {
     const toast = await this.toastController.create({
       message: msg,
-      duration: 5000
+      duration: 2000,
+      position: 'top',
+
     });
     toast.present();
   }
+
 }

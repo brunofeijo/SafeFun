@@ -1,69 +1,71 @@
-import { HomePage } from './../home/home.page';
+import { environment } from './../../../environments/environment';
+/* eslint-disable @angular-eslint/use-lifecycle-interface */
+import { LoginJSON } from './../../model/loginJSON';
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Storage } from '@ionic/storage';
 import { PopoverController } from '@ionic/angular';
-import { ToastBoxService } from 'src/app/util/toast-box.service';
+import { MessageBoxService } from 'src/app/util/message-box.service';
 
- 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss']
 })
-export class LoginPage {
 
-  public loginUserName: string;
-  public loginPassword: string;
-  public serverIP: string ='http://192.168.200.245/cld-core/ativos-mobile/login';
-  
+export class LoginPage {
+  public loginJSON: LoginJSON = {};
+  public serverIP = environment.serverIP;
+  public viewPassword = 'password';
+
   constructor(
-    
-    private Toast: ToastBoxService,
     private auth: AuthService,
     private storage: Storage,
     private popover: PopoverController,
-  ) {this.test();}
- 
-  ngOnInit() {} 
-
-  test(){
-alert("Um retorno de carro está\rbem no meio desta linha!");
-alert("\"Isto não saiu como deveria!\" disse ela");
-alert("Esta linha tem uma tabulação\taqui.");
-  }
-  
-  public storeIP(){
-    
+    public msg: MessageBoxService,
+  ) {
     this.storage.create();
+}
+
+  ngOnInit() {}
+
+  public exibirOcultar() {
+    this.viewPassword = this.viewPassword === 'text' ? 'password' : 'text';
+ }
+
+  public storeIP(){
     this.storage.set('1', this.serverIP);
-    this.Toast.presentToast('IP salvo com sucesso!');
+     this.msg.presentAlert('IP Salvo com sucesso!');
     this.popover.dismiss();
-    
   }
-  
 
   public login() {
-    if(this.loginUserName==''||this.loginPassword==''){
-      this.Toast.presentToast('Não esqueça de digitar seu usuário e senha!')}    
-    else {
-      if(this.serverIP==''){
-        this.Toast.presentToast('Você deve primeiramente informar o IP do servidor!')}
-    else{
-      this.storage.get('1').then(
-        data => {
-          console.log(this.serverIP);
-          this.serverIP = data;
-          this.auth.login(this.loginUserName, this.loginPassword, this.serverIP);
-          if(this.auth.userConnected == true){
-            this.loginUserName = '';
-            this.loginPassword = '';
-          }
-        }
-      )
-    
-      }
+    if(this.serverIP === ''){
+       this.msg.presentAlert('Configure primeiramente seu IP');
+    }else if(this.loginJSON.login === '' || this.loginJSON.senha === ''){
+       this.msg.presentAlert('Ops, campo usuário ou senha em branco!');
+    }else{
+      this.auth.login(this.serverIP, this.loginJSON);
     }
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

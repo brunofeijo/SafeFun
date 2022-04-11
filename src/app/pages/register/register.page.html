@@ -1,39 +1,39 @@
 <ion-header>
   <ion-toolbar>
     <ion-item lines="none"><ion-label style="text-align: center;"><b>Registro de usuários</b></ion-label></ion-item>
-    <ion-back-button slot="start" [routerLink]="['/home']"></ion-back-button>
-    <ion-button slot="end" fill="clear" (click)="logout()"><ion-icon name="log-out-outline"></ion-icon></ion-button>
+    <ion-back-button slot="start" [routerLink]="['/login']"></ion-back-button>
+    <!-- <ion-button slot="end" fill="clear" (click)="logout()"><ion-icon name="log-out-outline"></ion-icon></ion-button> -->
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-card>
  <ion-list>
-    <ion-item>
+    <ion-item lines="none">
       <ion-label position="floating">Login</ion-label>
-      <ion-input clear-input="true" placeholder="Digite seu login" type="text" [(ngModel)]="user.login"></ion-input>
+      <ion-input clear-input="true" placeholder="Digite seu login" type="text" [(ngModel)]="newUserInfo.login"></ion-input>
     </ion-item>
-    <ion-item>
+    <ion-item lines="none">
       <ion-label position="floating">Nome</ion-label>
-      <ion-input clear-input="true" placeholder="Digite seu nome completo" type="text" [(ngModel)]="user.fullName"></ion-input>
+      <ion-input clear-input="true" placeholder="Digite seu nome completo" type="text" [(ngModel)]="newUserInfo.nome"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label position="floating">Matrícula</ion-label>
-      <ion-input clear-input="true" placeholder="Digite sua matrícula" type="text" [(ngModel)]="user.registration"></ion-input>
+    <ion-item lines="none">
+      <ion-label>Selecione o perfil</ion-label>
+      <ion-select interface="popover" placeholder="Perfil" [(ngModel)]="newUserInfo.perfil">
+          <ion-select-option>
+            Administrador
+          </ion-select-option>
+          <ion-select-option>
+            Inventariante
+          </ion-select-option>
+      </ion-select>
     </ion-item>
-    <ion-item>
-      <ion-label position="floating">Cargo</ion-label>
-      <ion-input clear-input="true" placeholder="Digite seu cargo" type="text" [(ngModel)]="user.role"></ion-input>
-    </ion-item>
-    <ion-item>
+    <ion-item lines="none">
       <ion-label position="floating">Senha</ion-label>
-      <ion-input clear-input="true" placeholder="Digite sua senha" [type]="password_type" [(ngModel)]="user.senha"></ion-input>
-      <ion-button fill="clear" slot="end" (click)="exibirOcultar()"><ion-icon name="eye-off-outline"></ion-icon></ion-button>
+      <ion-input clear-input name="password" [type]="inputType" [(ngModel)]="newUserInfo.senha"></ion-input>
+      <ion-icon  [name]="(inputType === 'password') ? 'eye' : 'eye-off'" slot="end" (click)="inputType = (inputType == 'password') ? 'text' : 'password';"></ion-icon>
     </ion-item>
-    <ion-item>
-      <ion-label position="floating">Confirmação da senha</ion-label>
-      <ion-input clear-input="true" placeholder="Repita sua senha" [type]="password_type" [(ngModel)]="user.passwordConfirmation"></ion-input>
-      
-    </ion-item>
-    <ion-button (click)="registerNewUser()" style="text-transform: none;" type="submit" expand="full" color="secondary">Registrar</ion-button>
+    <ion-button (click)="registerNewUser()" style="text-transform: none;" type="submit" expand="block" color="secondary">Registrar</ion-button>
   </ion-list>
+</ion-card>
 </ion-content>

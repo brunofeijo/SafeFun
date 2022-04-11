@@ -24,7 +24,7 @@ const routes: Routes = [
   },
   {
     path: 'register',
-    canActivate: [AuthorizeGuard],
+    // canActivate: [AuthorizeGuard],
     loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
   },
   {
@@ -45,7 +45,7 @@ const routes: Routes = [
     path: 'local-register',
     canActivate: [AuthorizeGuard],
     loadChildren: () => import('./pages/local-register/local-register.module').then( m => m.LocalRegisterPageModule)
-  },
+  }
 ];
 
 @NgModule({

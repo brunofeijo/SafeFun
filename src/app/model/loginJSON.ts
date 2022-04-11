@@ -1,10 +1,9 @@
-export interface LoginJSON{ 
-       
-        "idToken": "",
-        "id": 0,
-        "nome": '',
-        "login": "",
-        "perfil": "",
-        "senha": "",
-
+/* eslint-disable max-len */
+export interface LoginJSON{
+  idToken?: string;
+  id?: number;
+  nome?: string;
+  login?: string;
+  perfil?: string;
+  senha?: string;
 }

@@ -12,17 +12,16 @@ import { ToastBoxService } from 'src/app/util/toast-box.service';
 })
 export class ConfigPage implements OnInit {
 
-    public deviceIsConnected: boolean = false;
+    public deviceIsConnected = false;
     public devices: Array<any> = [];
-    
 
   constructor(
-    
+
     public bluetooth: BluetoothSerial,
     public msgBox: MessageBoxService,
     public loadingBox: LoaderBoxService,
     public toastBox: ToastBoxService,
-    
+
   ) { }
 
   ngOnInit() {
@@ -75,7 +74,6 @@ export class ConfigPage implements OnInit {
     this.loadingBox.presentLoading('Conectando dispositivo...');
     this.bluetooth.connect(device).subscribe(
       data => {
-        this.deviceIsConnected = true;
         this.loadingBox.loadingController.dismiss('Conectando dispositivo...');
         if (this.deviceIsConnected===true) {
           this.clearDevices();

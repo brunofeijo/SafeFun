@@ -11,7 +11,6 @@ export class MaterialRegisterPage implements OnInit {
   constructor(
 
     public auth: AuthService
-    
   ) { }
 
   ngOnInit() {

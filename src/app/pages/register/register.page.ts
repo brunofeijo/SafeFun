@@ -1,8 +1,10 @@
-import { ToastBoxService } from './../../util/toast-box.service';
+import { Storage } from '@ionic/storage';
+import { NewUserInfo } from './../../model/new-user-info';
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import { environment } from 'src/environments/environment';
+
+
 
 @Component({
   selector: 'app-register',
@@ -10,36 +12,32 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
-
-  public user: any = {};
-  public password_type: string = 'password';
+  public viewPassword = 'password';
+  public newUserInfo: NewUserInfo = {};
+  public serverIP = environment.serverIP;
 
   constructor(
-
     public auth: AuthService,
-    public http: HttpClient,
-    public toast: ToastBoxService,
-    
+    public storage: Storage,
+
   ) { }
 
   ngOnInit() {
   }
-  
-  public exibirOcultar() {   
-    this.password_type = this.password_type === 'text' ? 'password' : 'text';
+
+  public exibirOcultar() {
+    this.viewPassword = this.viewPassword === 'text' ? 'password' : 'text';
  }
 
   public registerNewUser(){
-     this.http.post("http://192.168.200.245/cld-core/ativos-mobile/usuario", this.user,{observe: 'response'})
-       .subscribe(data => {
-         if(data.status===200){
-           this.toast.presentToast("Usuário criado com sucesso!");
-         }
-        
-        }, error => {
-         console.log(error);
-       });
-  }
+    this.storage.create();
+    this.storage.get('1').then(
+      data =>{
+        this.serverIP = data;
+        this.auth.createNewUser(this.newUserInfo, this.serverIP);
+      }
+    );
+ }
 
   public logout() {
     this.auth.logout();

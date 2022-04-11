@@ -21,17 +21,16 @@ export class LocalRegisterPage implements OnInit {
   }
 
   public getLocation(){
-
-    this.http.post("http://192.168.200.245/cld-core/ativos-mobile/localizacao", this.locations).subscribe(
+    this.http.post('http://192.168.200.245/cld-core/ativos-mobile/localizacao', this.locations).subscribe(
       data => {
         console.log(this.locations);
         this.locations = data;
-       
-       
+
+
       }, error => {
         console.log(error);
       });
-  
+
   }
 
   public logout() {

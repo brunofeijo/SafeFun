@@ -5,20 +5,20 @@
     <ion-button slot="end" fill="clear" (click)="logout()"><ion-icon name="log-out-outline"></ion-icon></ion-button>
   </ion-toolbar>
 </ion-header>
-
 <ion-card *ngIf="tags">
 <ion-toolbar>
-  <ion-card-header>Tags encontradas:&nbsp; Em construção </ion-card-header>
+  <ion-card-header>Tags encontradas:&nbsp;</ion-card-header>
 </ion-toolbar>
-</ion-card> 
+</ion-card>
+
+<ion-searchbar *ngIf="allTags.length" (ionChange)="searchTags($event)" [value]="RFID" placeholder="Digite o nome do material" clearInput></ion-searchbar>
 
 <ion-content>
-    <ion-card *ngFor="let tag of tags">
+    <ion-card *ngFor="let tag of allTags">
       <ion-label><br>&nbsp;&nbsp;&nbsp;<b>Material</b></ion-label>
-        <ion-card-content>EPC:&nbsp;{{tag}}</ion-card-content>
+        <ion-card-content>{{tag | uppercase }}</ion-card-content>
     </ion-card>
 </ion-content>
-
   <ion-card>
     <ion-list>
 
@@ -48,4 +48,4 @@
       <ion-button (click)="moveMaterial()" size="large" style="text-transform: none;" id="trigger-button" color="secondary" expand="full">Movimentar</ion-button>
     </ion-toolbar>
   </ion-footer>
-  
+

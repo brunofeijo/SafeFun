@@ -13,8 +13,8 @@ export class AuthorizeGuard implements CanActivate {
 
   canActivate(): boolean {
     let token = localStorage.getItem('token');
-    token = this.auth.loginIdToken;
-    if (token == null || token == undefined) {
+    token = this.auth.loginJSON.idToken;
+    if (token === null || token === undefined) {
       this.router.navigate(['/login']);
       return false;
     }
